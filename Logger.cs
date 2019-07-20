@@ -30,7 +30,7 @@ namespace Oxide.Plugins
     [Description("Configurable logging of chat, commands, connections, and more")]
     public class Logger : CovalencePlugin
     {
-		[PluginReference]
+        [PluginReference]
         private Plugin DiscordMessages;
         #region Configuration
 
@@ -71,12 +71,12 @@ namespace Oxide.Plugins
 
             [JsonProperty(PropertyName = "Log output to console (true/false)")]
             public bool LogToConsole { get; set; } = false;
-			
-			[JsonProperty(PropertyName = "Log output to discord (true/false)")]
+
+            [JsonProperty(PropertyName = "Log output to discord (true/false)")]
             public bool LogToDiscord { get; set; } = false;
-			
-			[JsonProperty(PropertyName="Discord Webhook URL")]
-			public string DiscordUrl { get; set; } = "";
+
+            [JsonProperty(PropertyName="Discord Webhook URL")]
+            public string DiscordUrl { get; set; } = "";
 
             // TODO: Option to listen to commands from admin, moderator, or all
 
@@ -337,10 +337,10 @@ namespace Oxide.Plugins
 
         private void Log(string filename, string key, params object[] args)
         {
-			if (config.LogToDiscord && !String.IsNullOrEmpty(config.DiscordUrl))
-			{
-				DiscordMessages?.Call("API_SendTextMessage", config.DiscordUrl, Lang(key, null, args));
-			}
+            if (config.LogToDiscord && !String.IsNullOrEmpty(config.DiscordUrl))
+	    {
+                DiscordMessages?.Call("API_SendTextMessage", config.DiscordUrl, Lang(key, null, args));
+            }
             if (config.LogToConsole)
             {
                 Puts(Lang(key, null, args));
