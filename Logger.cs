@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Oxide.Core;
 using Oxide.Core.Libraries.Covalence;
+using Oxide.Core.Plugins;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -339,7 +340,7 @@ namespace Oxide.Plugins
         {
             if (config.LogToDiscord && !String.IsNullOrEmpty(config.DiscordUrl))
 	    {
-                DiscordMessages?.Call("API_SendTextMessage", config.DiscordUrl, Lang(key, null, args));
+                DiscordMessages?.Call("API_SendTextMessage", config.DiscordUrl, $"[{DateTime.Now}] {Lang(key, null, args)}");
             }
             if (config.LogToConsole)
             {
